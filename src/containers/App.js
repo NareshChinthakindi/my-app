@@ -58,6 +58,7 @@ class App extends Component {
     if(this.state.showPersons) {
       persons = 
           <Persons 
+          
           persons={this.state.persons}
            clicked={this.deletePersonHandler} 
            changed = {this.newChangeTextHandler}/>;
@@ -66,8 +67,12 @@ class App extends Component {
   
     return (
       <div className="App">
-      <Cockpit showPersons = {this.state.showPersons}
-         persons = {this.state.persons} clicked={this.toogleEventHandler}/>
+      <Cockpit 
+      showPersons = {this.state.showPersons}
+         persons = {this.state.persons} 
+         clicked={this.toogleEventHandler}
+         appTitle={this.props.title}
+         />
          {persons}
             </div>
     );
