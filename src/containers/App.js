@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Persons from '.././components/Persons/Persons';
-import './App.css';
+import classes from './App.css';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
@@ -13,13 +14,7 @@ class App extends Component {
   });
 
 
-//   newChangeButtonHandler = (newName) =>{
-//     this.setState({
-//       persons:[{ name:newName, age : 3},
-//       { name:'Raghu', age : 4}  
-//  ]
-//     })
-//   }
+
 
   newChangeTextHandler = (event, id) =>{
     const personIndex = this.state.persons.findIndex( p=>{
@@ -30,8 +25,7 @@ class App extends Component {
      ...this.state.persons[personIndex]
     } 
 
-    //const person = Object.assign({}, this.state.persons[personIndex]);
-
+    
     person.name = event.target.value;
 
     const persons = [...this.state.persons];
@@ -42,11 +36,6 @@ class App extends Component {
       persons:persons
     })
 
-//     this.setState({
-//       persons:[{ name:event.target.value, age : 3},
-//       { name:'Raghu', age : 4}  
-//  ]
-//     })
   }
 
   toogleEventHandler = () =>{
@@ -64,48 +53,22 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'green',
-      color:'white',
-      font:'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'   
-
-
-    }
-
-    let personsHtml = null;
+    let persons = null;
 
     if(this.state.showPersons) {
-      personsHtml =(
-        <div>
-          <Persons persons={this.state.persons} clicked={this.deletePersonHandler} changed = {this.newChangeTextHandler}/>
-         </div>
-      );
-
-      style.backgroundColor = 'red';
+      persons = 
+          <Persons 
+          persons={this.state.persons}
+           clicked={this.deletePersonHandler} 
+           changed = {this.newChangeTextHandler}/>;
      }
 
-    //let classes = ['red', 'bold'].join(' ');
- const classes = [];
-
-         if (this.state.persons.length <=2) {
-           classes.push('red');
-         }
-
-         if (this.state.persons.length <=1) {
-              classes.push('bold')
-         }
-
+  
     return (
-      <div className="App">
-      <h1>Hi Iam react</h1>
-      <p className={classes.join(' ')}>This is really working </p>
-      <button onClick={this.toogleEventHandler} style={style}>Toogle Names</button>
-     
-        {personsHtml}
-     
+      <div className={classes.App}>
+      <Cockpit showPersons = {this.state.showPersons}
+         persons = {this.state.persons} clicked={this.toogleEventHandler}/>
+         {persons}
             </div>
     );
   }
