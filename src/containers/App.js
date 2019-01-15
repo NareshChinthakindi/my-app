@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Persons from '.././components/Persons/Persons';
-import classes from './App.css';
+import './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
@@ -65,7 +65,7 @@ class App extends Component {
 
   
     return (
-      <div className={classes.App}>
+      <div className="App">
       <Cockpit showPersons = {this.state.showPersons}
          persons = {this.state.persons} clicked={this.toogleEventHandler}/>
          {persons}

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Cockpit.css';
+import './Cockpit.css';
 
 
 const cockpit = (props) =>{
@@ -8,20 +8,20 @@ const cockpit = (props) =>{
     let btnClass = '';
     
     if(props.showPersons) {
-        btnClass = classes.Red;
+        btnClass = "Cockpit button.Red";
     }
 
 
     if (props.persons.length <=2) {
-        assignedClasses.push(classes.red);
+        assignedClasses.push("red");
     }
 
     if (props.persons.length <=1) {
-        assignedClasses.push(classes.bold);
+        assignedClasses.push("bold");
     }
 
     return (
-        <div className={classes.Cockpit}>
+        <div className="Cockpit">
             <h1>Hi Iam react</h1>
             <p className={assignedClasses.join(' ')}>This is really working </p>
             <button className={btnClass} onClick={props.clicked}>Toogle Names</button>
